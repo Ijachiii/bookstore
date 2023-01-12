@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [".railway.app", "localhost", "127.0.0.1"]
 INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
+    "books.apps.BooksConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
