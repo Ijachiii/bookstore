@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import *
 from .models import *
+from django.db.models import Q
 
 # Create your views here.
 class BookListView(LoginRequiredMixin, ListView):
@@ -23,4 +24,8 @@ class SearchResultsListView(ListView):
     model = Book
     context_object_name = "book_list"
     template_name = "books/search_results.html"
-    queryset = Book.objects.filter(title__icontains="beginners")
+
+    def get_queryset(self):
+        return Book.objects.filter(
+            Q(title__icontains="beginners") | Q(title__icontains="api")
+        )
